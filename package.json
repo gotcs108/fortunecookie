@@ -1,0 +1,19 @@
+{
+  "name": "fortunecookie",
+  "version": "1.0.0",
+  "description": "A server app that serves random fortune cookie messages",
+  "main": "app.js",
+  "dependencies": {
+    "aws-sdk": "^2.915.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mocha": "^8.4.0",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gotcs108",
+  "license": "ISC"
+}

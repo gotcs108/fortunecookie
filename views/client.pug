@@ -1,0 +1,20 @@
+doctype html
+html
+    body
+        if loggedInStatus
+            p Hello #{userID}!
+            h1 Submit fortune cookies here
+            form(action="./",method="POST")
+                label Fortune Cookie
+                input(type="text" name="fortunecookie")
+                input(type="submit")
+        else
+            div.loginbox
+                h1 Log in here
+                form(action="./login",method="POST")
+                    label ID
+                        input(type="text" name="id")
+                    label PW
+                        input(type="password" name="pw")
+                    input(type="submit")
+        
