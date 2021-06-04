@@ -6,12 +6,12 @@ You can either use `./form` or send `POST` and `GET` requests to the webapp to v
 I served this app on AWS EC2 micro.
 
 ## Usage and screenshots
-`GET ./`
+* `GET ./`
 Fortune cookies are served through get request.
 
 ![Fortune Cookies being served](./public/images/getimage.gif?raw=true)
 
-`POST ./`
+* `POST ./`
 If you are logged in, you can post cookies by sending a JSON payload. It responds with `400` status code for errors.
 ```javascript
 fetch('http://localhost:3000/', {
@@ -23,7 +23,7 @@ body: JSON.stringify({fortunecookie:'Hello! Fortune!'})
 
 ![POST request to post a fortune cookie](./public/images/jsonadd.gif?raw=true)
 
-`POST ./login`
+* `POST ./login`
 You can login by sending a JSON payload. It responds with `401` status code for incorrect logins.
 ```javascript
 fetch('http://localhost:3000/login', {
@@ -35,7 +35,7 @@ body: JSON.stringify({id:'userid',pw:'userpw'})
 
 ![POST request to logging in](./public/images/jsonloginfail.gif?raw=true)
 
-`./form`
+* `./form`
 You can use forms to log in and after logging in, post cookies. Forms are generated through `pug` template engine. 
 Logging In:
 
