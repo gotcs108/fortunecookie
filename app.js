@@ -30,7 +30,9 @@ app.use(serveConstructionPageMiddleware);
 app.use(session({
     secret: "keyboard cat",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    // localhost works but not 127.0.0.1?!
+    // cookie: {sameSite: 'none', secure: true}
 }));
 
 // Serve a fortune cookie for each get request 

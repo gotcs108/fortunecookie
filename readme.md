@@ -8,18 +8,35 @@ I served this app on AWS EC2 micro.
 ## Usage and screenshots
 `GET ./`
 Fortune cookies are served through get request.
+![Fortune Cookies being served]()
 
 `POST ./`
 If you are logged in, you can post cookies by sending a JSON payload. It responds with `400` status code for errors.
+```javascript
+fetch('http://localhost:3000/', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({fortunecookie:'Hello! Fortune!'})
+}).then(data=>console.log(data))
+```
 
-`POST ./`
-If you are logged in, you can post cookies by sending a JSON payload. It responds with `401` status code for incorrect logins.
+`POST ./login`
+You can login by sending a JSON payload. It responds with `401` status code for incorrect logins.
+```javascript
+fetch('http://localhost:3000/login', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({id:'userid',pw:'userpw'})
+}).then(data=>console.log(data))
+```
 
 `./form`
 You can use forms to log in and after logging in, post cookies. Forms are generated through `pug` template engine. 
 
+* NOTE: To my dismay, fetch requests and cross domain requests, only works within https settings or localhost (not 127.0.0.1) (I had to set `secure` and `sameSite` for set-cookies) *
+
 ## Install & run Instructions:
-1. Set up an AWS account and local config for access.
+1. Set up an AWS account and "aws credential profile file" or other forms of credentials for access.
 1. Tweak configs at `config.js`. (ex. AWS regions, port, serve construction page)
 1. Run `initialization.js` to create `Users` and `Fortunes` tables in `DynamoDB`.
     1. You can tweak `fortuneCookiesListFile` to automatically load fortune cookies. (ex. `text`)
@@ -32,6 +49,7 @@ You can use forms to log in and after logging in, post cookies. Forms are genera
 
 ### Key Components:
 * `public/construction.html` is the construction page that is served.
+* `views/client.pug` is used to generate the static page for `./form` through `pug` template engine.
 * `APIHelpers.js` is where you find the functions used in the routers (api endpoints).
 * `app.js` is what runs this app. It mainly consists of routers to api endpoints.
 * `config.js` contains configs for AWS regions, port, serve construction page.
