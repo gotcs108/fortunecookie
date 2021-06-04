@@ -8,7 +8,7 @@ I served this app on AWS EC2 micro.
 ## Usage and screenshots
 `GET ./`
 Fortune cookies are served through get request.
-![Fortune Cookies being served]()
+![Fortune Cookies being served](./images/getimage.gif?raw=true)
 
 `POST ./`
 If you are logged in, you can post cookies by sending a JSON payload. It responds with `400` status code for errors.
@@ -19,6 +19,7 @@ headers: {'Content-Type': 'application/json'},
 body: JSON.stringify({fortunecookie:'Hello! Fortune!'})
 }).then(data=>console.log(data))
 ```
+![POST request to post a fortune cookie](./images/jsonadd.gif?raw=true)
 
 `POST ./login`
 You can login by sending a JSON payload. It responds with `401` status code for incorrect logins.
@@ -29,11 +30,16 @@ headers: {'Content-Type': 'application/json'},
 body: JSON.stringify({id:'userid',pw:'userpw'})
 }).then(data=>console.log(data))
 ```
+![POST request to logging in](./images/jsonloginfail.gif?raw=true)
 
 `./form`
 You can use forms to log in and after logging in, post cookies. Forms are generated through `pug` template engine. 
+Logging In:
+![Logging in through form](./images/loginform.gif?raw=true)
+Submitting:
+![Submitting a fortune cookie through form](./images/submitform.gif?raw=true)
 
-* NOTE: To my dismay, fetch requests and cross domain requests, only works within https settings or localhost (not 127.0.0.1) (I had to set `secure` and `sameSite` for set-cookies) *
+*NOTE: To my dismay, fetch requests and cross domain requests, only works within https settings or localhost (not 127.0.0.1) (I had to set `secure` and `sameSite` for set-cookies)*
 
 ## Install & run Instructions:
 1. Set up an AWS account and "aws credential profile file" or other forms of credentials for access.
